@@ -1,0 +1,80 @@
+﻿<Window x:Class="MyCalc.Views.Shell"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MyCalc.Views"
+        mc:Ignorable="d"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Width="350"
+        Height="350"
+        Title="{Binding Title}">
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="FontSize" Value="20"></Setter>
+            <Setter Property="MinWidth" Value="50"></Setter>
+            <Setter Property="MinHeight" Value="50"></Setter>
+            <Setter Property="Margin" Value="5"></Setter>
+            <Setter Property="Command" Value="{Binding AddNumberCommand}"></Setter>
+            <Setter Property="CommandParameter" Value="{Binding Content, RelativeSource={RelativeSource Self}}"></Setter>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="5"></Setter>
+            <Setter Property="Height" Value="30"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="Auto"></ColumnDefinition>
+
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <TextBox Text="{Binding Expression}" Grid.ColumnSpan="5" Grid.Column="1" Grid.Row="1" FontSize="20" BorderThickness="1" BorderBrush="Black" TextAlignment="Right"></TextBox>
+
+        <Button Grid.Row="2" Grid.Column="1" Content="7"></Button>
+        <Button Grid.Row="2" Grid.Column="2" Content="8"></Button>
+        <Button Grid.Row="2" Grid.Column="3" Content="9"></Button>
+        <Button Grid.Row="2" Grid.Column="4" Content="+"></Button>
+        <Button Grid.Row="2" Grid.Column="5" Command="{Binding ClearCommand}" Content="CE"></Button>
+
+        <Button Grid.Row="3" Grid.Column="1" Content="3"></Button>
+        <Button Grid.Row="3" Grid.Column="2" Content="4"></Button>
+        <Button Grid.Row="3" Grid.Column="3" Content="5"></Button>
+        <Button Grid.Row="3" Grid.Column="4" Content="-"></Button>
+        <Button Grid.Row="3" Grid.Column="5" Command="{Binding EqualsCommand}" Content="="></Button>
+
+        <Button Grid.Row="4" Grid.Column="1" Content="1"></Button>
+        <Button Grid.Row="4" Grid.Column="2" Content="2"></Button>
+        <Button Grid.Row="4" Grid.Column="3" Content="3"></Button>
+        <Button Grid.Row="4" Grid.Column="4" Content="*"></Button>
+        <Button Grid.Row="4" Grid.Column="5" Content="X²"></Button>
+
+        <Button Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Content="0" ></Button>
+        <Button Grid.Row="5" Grid.Column="3" Content="."></Button>
+        <Button Grid.Row="5" Grid.Column="4" Content="/"></Button>
+        <Button Grid.Row="5" Grid.Column="5" Content="{Binding Source=\{}"></Button>
+    </Grid>
+</Window>
